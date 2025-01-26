@@ -13,4 +13,8 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'instructor_id');
     }
+    public function sections()
+    {
+        return $this->hasMany(Section::class)->orderBy('order');;
+    }
 }

@@ -12,4 +12,8 @@ class Section extends Model
     public function course(): BelongsTo {
         return $this->belongsTo(Course::class,'course_id');
     }
+    public function videos()
+    {
+        return $this->hasMany(Video::class)->orderBy('order');;
+    }
 }
