@@ -135,194 +135,10 @@
     </div>
 
 
-    <div class="top_article_section">
-        <div class="main_top_article_section">
-            <h1 class="top_article_title">
-                <span class="left_top_article_title">
-                    <i class="fa-regular fa-copy"></i>Top</span>
-                <span class="right_top_category_title"> Article</span>
-            </h1>
-            <p class="article_text">Here Are The List Of Top Category That People Love Each Category May Have Articl Course,Quiz or Course</p>
-            <div class="article_box_section">
-                <div class="top_article_box_section">
-
-                    <div class="left_article_box_section">
-                        <i class="fa-solid fa-caret-left"></i>
-                    </div>
-                    <div class="middle_article_box_section">
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                        <div class="article_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="article_box_title">Machine Learning</h1>
-                            <span class="article_type">Type : Article</span>
-                            <a href="" class="article_read">Read</a>
-                        </div>
-                    </div>
-                    <div class="right_article_box_section">
-                        <i class="fa-solid fa-caret-right"></i>
-                    </div>
-                </div>
-                <div class="bottom_article_box_section">
-
-                    <a href="" class="see_more_article">See More Article</a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     
 
-    <div class="top_quiz_section">
-        <div class="main_top_quiz_section">
-            <h1 class="top_quiz_title">
-                <span class="left_top_quiz_title">
-                    <i class="fa-regular fa-copy"></i>Top</span>
-                <span class="right_top_quiz_title"> Quizes</span>
-            </h1>
-            <p class="quiz_text">Here Are The List Of Top Category That People Love Each Category May Have Articl Course,Quiz or Course</p>
-            <div class="top_quiz_box_section">
-                <div class="left_top_quiz_section">
-            <h1 class="top_quiz_heading">
-                <span class="left_top_quiz_title">
-                    <i class="fa-regular fa-copy"></i>Top</span>
-                <span class="right_top_quiz_title"> Quizes</span>
-            </h1>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <span class="quiz_type">Medium</span>
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <span class="quiz_type">Hard</span>
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-         
-            <a href="" class="see_more_quiz_in_box">See More</a>
-                </div>
-                <div class="right_top_quiz_section">
-            <h1 class="top_quiz_heading">
-                <span class="left_top_quiz_title">
-                    <i class="fa-regular fa-copy"></i>Top</span>
-                <span class="right_top_quiz_title"> Quizes</span>
-            </h1>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-         
-            <a href="" class="see_more_quiz_in_box">See More</a>
-                </div>
-                <div class="left_top_quiz_section">
-            <h1 class="top_quiz_heading">
-                <span class="left_top_quiz_title">
-                    <i class="fa-regular fa-copy"></i>Top</span>
-                <span class="right_top_quiz_title"> Quizes</span>
-            </h1>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-         
-            <a href="" class="see_more_quiz_in_box">See More</a>
-                </div>
-                <div class="right_top_quiz_section">
-            <h1 class="top_quiz_heading">
-                <span class="left_top_quiz_title">
-                    <i class="fa-regular fa-copy"></i>Top</span>
-                <span class="right_top_quiz_title"> Quizes</span>
-            </h1>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-            <div class="quiz_box">
-                <img src="./asset/image/1.jpg" alt="" class="quiz_logo">
-                <h3 class="quiz_title">Python Begineer And Advance 1</h3>
-                <a href="" class="read_quiz">Solve</a>
-            </div>
-         
-            <a href="" class="see_more_quiz_in_box">See More</a>
-                </div>
-            </div>
-            <a href="" class="see_more_quiz">More Quiz</a>
-        </div>
-    </div>
+    
 
 
 
@@ -341,30 +157,16 @@
                         <i class="fa-solid fa-caret-left"></i>
                     </div>
                     <div class="middle_course_box_section">
+                        @foreach ($courses as $course)
+                        
                         <div class="course_box">
                             <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="course_box_title"> complete Machine Learning learning course from zero to hero</h1>
-                            <span class="course_price">Price : 3000 Tk</span>
+                            <h1 class="course_box_title"> {{$course->title}}</h1>
+                            <span class="course_price">Price : {{$course->price}} Tk</span>
                             <a href="" class="course_details_btn">Details</a>
                         </div>
-                        <div class="course_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="course_box_title"> complete Machine Learning learning course from zero to hero</h1>
-                            <span class="course_price">Price : 3000 Tk</span>
-                            <a href="" class="course_details_btn">Details</a>
-                        </div>
-                        <div class="course_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="course_box_title"> complete Machine Learning learning course from zero to hero</h1>
-                            <span class="course_price">Price : 3000 Tk</span>
-                            <a href="" class="course_details_btn">Details</a>
-                        </div>
-                        <div class="course_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
-                            <h1 class="course_box_title"> complete Machine Learning learning course from zero to hero</h1>
-                            <span class="course_price">Price : 3000 Tk</span>
-                            <a href="" class="course_details_btn">Details</a>
-                        </div>
+                        @endforeach
+                      
                         <div class="course_box_m">
                            
                             <a href="" class="course_details_btn">See More Course</a>
