@@ -10,10 +10,12 @@ Route::get('/', [HomeController::class,'index']);
 
 // routes for users 
 Route::view('/register', 'register');
-Route::view('/login', 'login');
+Route::get('/login', function(){
+    return view('login');
+})->name('login');
 Route::post('/register', [UserAuthController::class,'register']);
 Route::post('/login', [UserAuthController::class,'login']);
-Route::get('/profile', [UserController::class,'profile']);
+Route::get('/profile', [UserController::class,'profile'])->middleware('auth');
 // Route::get('/', [UserController::class,'profile']);
 
 
