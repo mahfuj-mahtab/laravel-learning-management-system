@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Andika&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f23be647b6.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset ('css/app.css')}}">
+    <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
     <header>

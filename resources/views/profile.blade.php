@@ -39,7 +39,7 @@
                             <img src="./asset/image/1.jpg" alt="" class="article_logo">
                             <h1 class="course_box_title"> {{$course->course->title}}</h1>
                             <span class="course_price">Price : {{$course->price}}{{$course->course->price}} Tk</span>
-                            <a href="/profile/course/{{$course->id}}/section/{{$course->course->sections[0]->id}}/video/{{$course->course->sections[0]->videos[0]->id}}" class="course_details_btn">Details</a>
+                            <!-- <a href="/profile/course/{{$course->id}}/section/{{$course->course->sections[0]->id}}/video/{{$course->course->sections[0]->videos[0]->id}}" class="course_details_btn">Details</a> -->
                         </div>
                         @endforeach
                       

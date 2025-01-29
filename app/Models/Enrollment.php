@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 
+
 class Enrollment extends Model
 {
+    public $timestamps = false;
+
     protected $fillable = ['user_id', 'course_id', 'enrolled_at'];
     public function user(): BelongsTo
     {

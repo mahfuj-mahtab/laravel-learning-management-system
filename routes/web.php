@@ -7,6 +7,12 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Stripe\Stripe;
+use Stripe\Checkout\Session;
+use Stripe\Webhook;
+use Stripe\Event;
+
+
 Route::get('/', [HomeController::class,'index']);
 
 // routes for users 
@@ -41,11 +47,81 @@ Route::post('/forgot-password', function (Request $request) {
 
 
 Route::post('/register', [UserAuthController::class,'register']);
+
 Route::post('/login', [UserAuthController::class,'login']);
+
 Route::get('/profile', [UserController::class,'profile'])->middleware('auth');
+
 Route::get('/profile/course/{course_id}/', [UserController::class,'profile_course'])->middleware('auth');
+
+Route::post('/profile/course/{course_id}/enroll/', [CourseController::class,'profile_course_enroll'])->middleware('auth');
+
 Route::get('/profile/course/{course_id}/section/{section_id}/video/{video_id}/', [UserController::class,'profile_course_video'])->middleware('auth');
+
 // Route::get('/', [UserController::class,'profile']);
 
 
 Route::get('/course/{course_id}/{course_title}/', [CourseController::class,'showCourse']);
+
+Route::post('/checkout', function(){
+    Stripe::setApiKey('sk_test_51O2XiNAI0AhoVGU2aREROYBMBIU4J9S9VUIn45rVHQ5z7cbACqEUTBV7E4GTa8omyfk3AFR2vpBHs3tgk0RargU600Ql0AWMdR');
+
+    $YOUR_DOMAIN = 'http://127.0.0.1:8000';
+    try {
+        $checkout_session = Session::create([
+            'line_items' => [[
+              # Provide the exact Price ID (e.g. pr_1234) of the product you want to sell
+              'price' => 'price_1O2Y57AI0AhoVGU25C5aW6bt',
+              'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => $YOUR_DOMAIN . '/success.html',
+            'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
+          ]);
+          return redirect()->away($checkout_session->url);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+    
+    
+    
+});
+
+// Route::post('/webhook', function (Request $request) {
+//     try {
+//         Stripe::setApiKey(env('STRIPE_SECRET'));
+
+//         $payload = @file_get_contents('php://input');
+//         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? '';
+//         $endpoint_secret = env('STRIPE_WEBHOOK_SECRET');
+
+//         try {
+//             $event = Webhook::constructEvent($payload, $sig_header, $endpoint_secret);
+//         } catch (\UnexpectedValueException $e) {
+//             // Invalid payload
+//             return response()->json(['error' => 'Invalid payload'], 400);
+//         } catch (\Stripe\Exception\SignatureVerificationException $e) {
+//             // Invalid signature
+//             return response()->json(['error' => 'Invalid signature'], 400);
+//         }
+
+//         // Handle the event
+//         switch ($event->type) {
+//             case 'checkout.session.completed':
+//                 $session = $event->data->object;
+//                 Log::info('Payment successful for session: ' . $session->id);
+                
+//                 // Call function to handle fulfillment
+//                 handlePaymentSuccess($session);
+//                 break;
+            
+//             default:
+//                 Log::info('Unhandled event type: ' . $event->type);
+//         }
+
+//         return response()->json(['status' => 'success']);
+//     } catch (\Exception $e) {
+//         Log::error('Webhook error: ' . $e->getMessage());
+//         return response()->json(['error' => 'Something went wrong'], 500);
+//     }
+// });
