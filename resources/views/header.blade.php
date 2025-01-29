@@ -17,7 +17,7 @@
             <div class="top_header">
                 <div class="top_main_header">
                     <div class="top_main_header_left">
-                        <h1 class="logo">CoderHobo</h1>
+                        <a href="/"><h1 class="logo">CoderHobo</h1></a> 
                     </div>
                     <div class="top_main_header_middle">
                         <ul>
@@ -29,14 +29,16 @@
                         </ul>
                     </div>
                     <div class="top_main_header_right">
-                        <form action="/gg">
+                        <!-- <form action="/gg">
                             <input class="search_txt" type="text" placeholder="Search...">
                             <button class="search_btn"><i class="fa-solid fa-magnifying-glass search_btn_icon"></i></button>
-                        </form>
+                        </form> -->
                         
-                        <i  class="fa-solid fa-user icon">
-                            
-                        </i>
+                        <a href="/profile">
+                                <i  class="fa-solid fa-user icon">
+
+                                    </i>
+                            </a>
                         <i class="fa-solid fa-bars icon_bar"></i>
                     </div>
                 </div>

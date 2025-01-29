@@ -32,7 +32,7 @@
 
         </div>
         <div class="right_banner">
-            <img src="./asset/image/im.png" alt="" class="banner_right_img">
+            <img src={{asset('image/im.png')}} alt="" class="banner_right_img">
         </div>
     </div>
     <div class="top_category_section">

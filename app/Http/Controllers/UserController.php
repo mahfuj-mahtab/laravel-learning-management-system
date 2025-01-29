@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function profile(){
         $user = Auth::user();
-        dd(json_encode($user->enrollments, JSON_PRETTY_PRINT));
+        // dd(json_encode($user->enrollments, JSON_PRETTY_PRINT));
         return view('profile',['user'=>$user]);
     }
     public function profile_course(int $course_id){
