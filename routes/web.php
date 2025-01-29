@@ -7,12 +7,13 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Laravel\Socialite\Facades\Socialite;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 use Stripe\Webhook;
 use Stripe\Event;
-
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 Route::get('/', [HomeController::class,'index']);
 
 // routes for users 
@@ -86,6 +87,39 @@ Route::post('/checkout', function(){
     
     
 });
+
+
+
+// login with google 
+
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.login');
+
+Route::get('/auth/google/callback', function () {
+    try {
+        $googleUser = Socialite::driver('google')->user();
+
+        // Find or create user
+        $user = User::updateOrCreate(
+            ['email' => $googleUser->getEmail()],
+            [
+                'name' => $googleUser->getName(),
+                'avatar' => 'default.jpg',
+                'role' => 'user',
+                'password' => bcrypt(str()->random(24)), // Random password
+            ]
+        );
+
+        Auth::login($user);
+
+        return redirect('/profile'); // Redirect to dashboard after login
+    } catch (\Exception $e) {
+        return redirect('/login')->with('error', 'Google login failed');
+    }
+});
+
+
 
 // Route::post('/webhook', function (Request $request) {
 //     try {

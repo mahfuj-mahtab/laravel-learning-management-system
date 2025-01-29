@@ -40,6 +40,12 @@
 
                                     </i>
                             </a>
+                            @auth
+                                <form action="/logout/" method="POST">
+                                    @csrf
+                                    <button class="btn_logout" type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
+                                </form>
+                            @endauth
                         <i class="fa-solid fa-bars icon_bar"></i>
                     </div>
                 </div>

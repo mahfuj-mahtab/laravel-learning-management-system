@@ -6462,3 +6462,9 @@
     margin-top: 10px;
   
   }
+ .btn_logout{
+  background: #222831;
+  color: white;
+  margin-right: 10px;
+  font-size: 16px;
+ }

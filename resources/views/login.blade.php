@@ -64,7 +64,7 @@
                         <input type="checkbox" name="checked" id="" class="check-box"/><span style="color: #869BA4">I agree to <span style="color: #207398"> <b> <Link to="" class="a_login"> Term & Condition </Link></b> </span></span><br/>
                         <a href="" class="a_fb"><i class="fa-brands fa-facebook"></i> Login With Facebook</a> 
                        
-                        <a href="{% provider_login_url 'google' %}?next=/account/login/with/google" class="a_fb"> <i class="fa-brands fa-google"></i> Login With Google</a> 
+                        <a href="/auth/google/" class="a_fb"> <i class="fa-brands fa-google"></i> Login With Google</a> 
                         
                         <br/>
                         <input type="submit" value="Login"/>
