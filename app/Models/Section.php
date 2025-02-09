@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Section extends Model
 {
-    protected $fillable = ['title','course_id','order'];
+    protected $fillable = ['title','details','course_id','module_id','order','status'];
 
     public function course(): BelongsTo {
         return $this->belongsTo(Course::class,'course_id');

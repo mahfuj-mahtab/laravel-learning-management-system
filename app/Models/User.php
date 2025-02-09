@@ -22,6 +22,7 @@ class User extends Authenticatable
         'password',
         'avatar',
         'role',
+        'bio'
     ];
     public function courses(): HasMany
     {
@@ -30,6 +31,9 @@ class User extends Authenticatable
     public function enrollments(): HasMany
     {
         return $this->hasMany(Enrollment::class);
+    }
+    public function lesson_completed(){
+        return $this->hasMany(Lesson_progress::class);
     }
     /**
      * The attributes that should be hidden for serialization.

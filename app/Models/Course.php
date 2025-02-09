@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Course extends Model
 {
-    protected $fillable = ['title','description','instructor_id','price','status','image'];
+    protected $fillable = ['title','short_description','description','banner_image','type','instructor_id','sub_category_id','price','discount_price','status'];
 
     public function instructor(): BelongsTo 
     {
         return $this->belongsTo(User::class, 'instructor_id');
     }
-    public function sections()
+    public function modules()
     {
-        return $this->hasMany(Section::class)->orderBy('order');;
+        return $this->hasMany(Module::class)->orderBy('order');;
     }
 }
