@@ -108,6 +108,7 @@ Route::get('/auth/google/callback', function () {
                 'avatar' => 'default.jpg',
                 'role' => 'user',
                 'password' => bcrypt(str()->random(24)), // Random password
+                'bio' => ''
             ]
         );
 
