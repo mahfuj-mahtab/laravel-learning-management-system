@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
@@ -160,3 +162,20 @@ Route::get('/auth/google/callback', function () {
 //         return response()->json(['error' => 'Something went wrong'], 500);
 //     }
 // });
+
+// admin panel routes 
+
+Route::get('/admin/courses/', [AdminCourseController::class, 'AllCourses'])->middleware('auth','admin');
+Route::get('/admin/course/{id}/', [AdminCourseController::class, 'SingleCoursesShow'])->middleware('auth','admin');
+Route::patch('/admin/course/{id}/edit', [AdminCourseController::class, 'SingleCoursesEdit'])->middleware('auth','admin');
+Route::post('/admin/course/{id}/delete', [AdminCourseController::class, 'SingleCoursesDelete'])->middleware('auth','admin');
+
+Route::get('/admin/categories/', [AdminCategoryController::class, 'AllCategory'])->middleware('auth','admin');
+Route::get('/admin/category/{id}/', [AdminCategoryController::class, 'SingleCategoryShow'])->middleware('auth','admin');
+Route::patch('/admin/category/{id}/edit', [AdminCategoryController::class, 'SingleCategoryEdit'])->middleware('auth','admin');
+Route::post('/admin/category/{id}/delete', [AdminCategoryController::class, 'SingleCategoryDelete'])->middleware('auth','admin');
+
+Route::get('/admin/sub_categories/', [AdminCategoryController::class, 'AllSubCategory'])->middleware('auth','admin');
+Route::get('/admin/sub_categorie/{id}/', [AdminCategoryController::class, 'SingleSubCategoryShow'])->middleware('auth','admin');
+Route::patch('/admin/sub_categorie/{id}/edit', [AdminCategoryController::class, 'SingleSubCategoryEdit'])->middleware('auth','admin');
+Route::post('/admin/sub_categorie/{id}/delete', [AdminCategoryController::class, 'SingleSubCategoryDelete'])->middleware('auth','admin');
