@@ -19,7 +19,7 @@ class AdminMiddleware
         {
             // Check if the user is authenticated and is an admin
             if (!Auth::check() || Auth::user()->role !== 'ADMIN') {
-                redirect()->route('login');
+                return redirect()->route('login');
             }
     
             return $next($request);

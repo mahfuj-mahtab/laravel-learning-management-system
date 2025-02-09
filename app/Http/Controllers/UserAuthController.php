@@ -14,7 +14,7 @@ class UserAuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
-        User::create(["name" => $request-> name,'email'=> $request-> email, "password" => bcrypt($request-> password),"avatar"=>"default.jpg","role" => "user"]);
+        User::create(["name" => $request-> name,'email'=> $request-> email, "password" => bcrypt($request-> password),"avatar"=>"default.jpg","role" => "ADMIN"]);
         
         return view('register');
     }
@@ -24,6 +24,10 @@ class UserAuthController extends Controller
             'password' => 'required|min:8',
         ]);
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            // if(Auth::user()->role == 'ADMIN'){
+
+            //     return redirect('/login');
+            // }
             $request->session()->regenerate();
             return redirect()->intended('/profile');
         }
