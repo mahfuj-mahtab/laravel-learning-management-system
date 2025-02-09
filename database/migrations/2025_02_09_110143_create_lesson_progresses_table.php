@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('lesson_progresses', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('details');
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
-            $table->foreignId('module_id')->constrained('modules')->onDelete('cascade');
-            $table->integer('order');
-            $table->enum('status', ['ACTIVE','INACTIVE','DRAFT'])->default('INACTIVE');
-            $table->timestamps();
+            $table->foreignId('video_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('watched_info');
+            $table->dateTime('watched_date',0);
+            $table->timestamp('enrolled_at');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('section');
+        Schema::dropIfExists('lesson_progresses');
     }
 };

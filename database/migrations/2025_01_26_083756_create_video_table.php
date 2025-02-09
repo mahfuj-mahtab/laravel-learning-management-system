@@ -21,7 +21,6 @@ return new class extends Migration
 
             $table->string('embed_link')->nullable();
             $table->string('video_link')->nullable();
-            $table->integer('duration');
             $table->integer('order');
             $table->float('duration');
             $table->enum('status', ['ACTIVE','INACTIVE','DRAFT'])->default('INACTIVE');
