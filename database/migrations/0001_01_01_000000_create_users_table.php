@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('bio');
             $table->string('avatar');
-            $table->string('role')->default ('user');
+            $table->enum('role',['USER','ADMIN','INSTRUCTOR'])->default('USER');
             
         });
 

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('details');
-            $table->foreignId('course_id')->constrained()->onDelete('cascade');
-            $table->foreignId('module_id')->constrained()->onDelete('cascade');
-            $table->integer('order');
+            $table->string('name');
+            $table->string('image');
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade');
             $table->enum('status', ['ACTIVE','INACTIVE','DRAFT'])->default('INACTIVE');
             $table->timestamps();
         });
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('section');
+        Schema::dropIfExists('categories');
     }
 };
