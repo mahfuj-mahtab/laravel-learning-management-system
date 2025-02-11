@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserAuthController;
@@ -165,7 +166,15 @@ Route::get('/auth/google/callback', function () {
 
 // admin panel routes 
 
+Route::get('/admin/dashboard/', [AdminDashboardController::class, 'Index'])->middleware('auth','admin');
+
+
 Route::get('/admin/courses/', [AdminCourseController::class, 'AllCourses'])->middleware('auth','admin');
+
+Route::get('/admin/course/add/', [AdminCourseController::class, 'SingleCourseAdd'])->middleware('auth','admin');
+
+
+
 Route::post('/admin/course/add/', [AdminCourseController::class, 'SingleCourseAdd'])->middleware('auth','admin');
 Route::get('/admin/course/{id}/', [AdminCourseController::class, 'SingleCoursesShow'])->middleware('auth','admin');
 Route::patch('/admin/course/{id}/edit', [AdminCourseController::class, 'SingleCoursesEdit'])->middleware('auth','admin');

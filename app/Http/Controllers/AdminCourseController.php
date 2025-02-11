@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 class AdminCourseController extends Controller
 {
+   
     public function SingleCourseAdd(){
-       //
+       return view('AdminCreateCourse');
+
     }
     public function AllCourses(){
         $courses = Course::all();
