@@ -1,9 +1,10 @@
-@include('AdminHeader')
 <div class="container-fluid bg-light">
     <div class="row">
         @include('AdminLeftContainer')
 
         <div class="col border border-1">
+        @include('AdminHeader')
+
             <div class="w-100">
                 <div class="row">
                     <div class="col">

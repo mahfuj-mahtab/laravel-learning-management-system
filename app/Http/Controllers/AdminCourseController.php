@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class AdminCourseController extends Controller
 {
    
-    public function SingleCourseAdd(){
+    public function SingleCourseAdd(Request $request){
+        if($request->method() == 'POST'){
+            dd($request);
+        }
        return view('AdminCreateCourse');
 
     }
