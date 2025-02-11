@@ -19,13 +19,15 @@
             <table class="table">
                 <thead class="table-success ">
                     <tr>
-                    <th scope="col">#</th>
+                    
                     <th scope="col" class="col-4">Title</th>
                     <th scope="col">Type</th>
                     <th scope="col">Instructor's</th>
                     <th scope="col">Category</th>
                     <th scope="col">Price</th>
                     <th scope="col">Status</th>
+                    <td>Actions</td>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -34,10 +36,11 @@
                     <tr>
                     <th scope="row">{{$course->title}}</th>
                     <td>{{$course->type}}</td>
-                    <td>instructor name</td>
+                    <td>{{$course->instructor->name}}</td>
                     <td>{{$course->sub_category->name}}</td>
                     <td>{{$course->discount_price}} <del>{{$course->price}}</del> </td>
                     <td>{{$course->status}}</td>
+                    <td>Actions</td>
                     </tr>
                     @endforeach
                     

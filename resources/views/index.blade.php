@@ -160,9 +160,9 @@
                         @foreach ($courses as $course)
                         
                         <div class="course_box">
-                            <img src="./asset/image/1.jpg" alt="" class="article_logo">
+                            <img src={{ asset('storage/' . $course->banner_image) }} alt="" class="article_logo">
                             <h1 class="course_box_title"> {{$course->title}}</h1>
-                            <span class="course_price">Price : {{$course->price}} Tk</span>
+                            <span class="course_price">Price : {{$course->discount_price}} Tk</span>
                             <a href="/course/{{$course->id}}/{{$course->title}}/" class="course_details_btn">Details</a>
                         </div>
                         @endforeach

@@ -11,9 +11,13 @@ class Course extends Model
 {
     protected $fillable = ['title','short_description','description','banner_image','type','instructor_id','sub_category_id','price','discount_price','status'];
 
-    public function instructors():  HasMany
+    public function instructor():  BelongsTo
     {
-        return $this->hasMany(User::class, 'instructor_id');
+        return $this->belongsTo(User::class, 'instructor_id');
+    }
+    public function sub_category():  BelongsTo
+    {
+        return $this->belongsTo(Sub_category::class, 'sub_category_id');
     }
     public function modules()
     {
