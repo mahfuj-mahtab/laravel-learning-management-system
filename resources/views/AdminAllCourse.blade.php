@@ -40,7 +40,11 @@
                     <td>{{$course->sub_category->name}}</td>
                     <td>{{$course->discount_price}} <del>{{$course->price}}</del> </td>
                     <td>{{$course->status}}</td>
-                    <td>Actions</td>
+                    <td>
+                        <a href="/admin/course/{{$course->id}}/" class="text-dark"><i class="fa-solid fa-square-caret-right"></i></a>
+                        <a href="" class="text-dark"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                    </td>
                     </tr>
                     @endforeach
                     

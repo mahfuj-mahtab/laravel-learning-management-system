@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Module;
 use App\Models\Sub_category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -54,13 +55,51 @@ class AdminCourseController extends Controller
         return view('AdminCreateCourse',['instructors'=>$instructors, 'categories'=>$category]);
 
     }
+    public function AdminModuleCreate(Request $request, $course_id){
+        if($request->method() == 'POST'){
+               
+                $validated = $request->validate([
+                    'title'            => 'required|string|max:255',
+                    'description'      => 'required|string',
+                    'date'             => 'required',
+                    'instructor'       => 'required|exists:users,id',
+                    'status'           => 'required|in:DRAFT,ACTIVE,INACTIVE',
+                ]);
+        
+                
+        
+                $modules = Module::where('course_id', $course_id)->orderBy('order','DESC')->get();
+                $order = 1;
+                // dd($modules[0]->order);
+                // dd($modules);
+                if($modules->isNotEmpty()){
+                        $order = $modules[0]->order + 1;
+        }
+                $module = Module::create([
+                    'title'            => $validated['title'],
+                    'details'          => $validated['description'],
+                    'course_id'        => $course_id,
+                    'unlock_date'      => $validated['date'],
+                    'order'            => $order,
+                    'instructor_id'    => $validated['instructor'],
+                    'status'           => $validated['status'],
+                ]);
+        
+                return redirect()->back()->with('success', 'Course created successfully!');
+            
+        }
+        $instructors = User::where('role', 'INSTRUCTOR')->get();
+        $course = Course::findOrFail($course_id);
+        return view('AdminModuleCreate',['instructors'=>$instructors,'course_id'=> $course_id]);
+
+    }
     public function AllCourses(){
         $courses = Course::all();
         return view('AdminAllCourse',['courses'=>$courses]);
     }
     public function SingleCoursesShow($id){
         $course = Course::findOrFail($id);
-        return view('AdminSingleCourse',['courses'=>$course]);
+        return view('AdminSingleCourse',['course'=>$course]);
     }
     public function SingleCoursesEdit($id){
         // $course = Course::findOrFail($id);
