@@ -184,6 +184,9 @@ Route::post('/admin/course/{id}/delete', [AdminCourseController::class, 'SingleC
 Route::get('/admin/course/module/add/{course_id}/', [AdminCourseController::class, 'AdminModuleCreate'])->middleware('auth','admin');
 Route::post('/admin/course/module/add/{course_id}/', [AdminCourseController::class, 'AdminModuleCreate'])->middleware('auth','admin');
 
+Route::get('/admin/course/section/add/{course_id}/module/{module_id}/', [AdminCourseController::class, 'AdminSectionCreate'])->middleware('auth','admin');
+Route::post('/admin/course/section/add/{course_id}/module/{module_id}/', [AdminCourseController::class, 'AdminSectionCreate'])->middleware('auth','admin');
+
 Route::get('/admin/categories/', [AdminCategoryController::class, 'AllCategory'])->middleware('auth','admin');
 Route::get('/admin/category/{id}/', [AdminCategoryController::class, 'SingleCategoryShow'])->middleware('auth','admin');
 Route::patch('/admin/category/{id}/edit', [AdminCategoryController::class, 'SingleCategoryEdit'])->middleware('auth','admin');

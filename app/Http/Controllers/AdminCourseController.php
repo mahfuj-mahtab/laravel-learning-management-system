@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Module;
+use App\Models\Section;
 use App\Models\Sub_category;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -91,6 +92,46 @@ class AdminCourseController extends Controller
         $instructors = User::where('role', 'INSTRUCTOR')->get();
         $course = Course::findOrFail($course_id);
         return view('AdminModuleCreate',['instructors'=>$instructors,'course_id'=> $course_id]);
+
+    }
+    public function AdminSectionCreate(Request $request, $course_id,$module_id){
+        if($request->method() == 'POST'){
+               
+                $validated = $request->validate([
+                    'title'            => 'required|string|max:255',
+                    'description'      => 'required|string',
+                    'status'           => 'required|in:DRAFT,ACTIVE,INACTIVE',
+                ]);
+        
+                
+        
+                $sections = Section::where('course_id', $course_id)->where('module_id', $module_id)->orderBy('order','DESC')->get();
+                $order = 1;
+                // dd($modules[0]->order);
+                // dd($modules);
+                if($sections->isNotEmpty()){
+                        $order = $sections[0]->order + 1;
+        }
+                $section = Section::create([
+                    'title'            => $validated['title'],
+                    'details'          => $validated['description'],
+                    'course_id'        => $course_id,
+                    'module_id'        => $module_id,
+                    'order'            => $order,
+                    'status'           => $validated['status'],
+                ]);
+        
+                return redirect(sprintf('/admin/course/%d/', $course_id));
+
+            
+        }
+        // $course = Course::findOrFail($course_id);
+        // $module = Module::findOrFail($module_id);
+        $module = Module::where('id', $module_id)->where('course_id', $course_id)->first();
+        if(!$module){
+            return redirect('/admin/dashboard/');
+        }
+        return view('AdminSectionCreate',['course_id'=> $course_id,'module_id'=> $module_id]);
 
     }
     public function AllCourses(){

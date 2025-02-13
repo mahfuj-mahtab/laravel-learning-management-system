@@ -47,7 +47,7 @@
                     <td>{{$module->unlock_date}}</del> </td>
                     <td>{{$module->status}}</td>
                     <td>
-
+                    <a href="/admin/course/section/add/{{$course->id}}/module/{{ $module->id }}/">+section</a>
                     </td>
                     </tr>
                
