@@ -7,6 +7,7 @@ use App\Models\Module;
 use App\Models\Section;
 use App\Models\Sub_category;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 
 class AdminCourseController extends Controller
@@ -132,6 +133,53 @@ class AdminCourseController extends Controller
             return redirect('/admin/dashboard/');
         }
         return view('AdminSectionCreate',['course_id'=> $course_id,'module_id'=> $module_id]);
+
+    }
+    public function AdminVideoCreate(Request $request, $course_id,$module_id,$section_id){
+        if($request->method() == 'POST'){
+               
+                $validated = $request->validate([
+                    'title'            => 'required|string|max:255',
+                    'embed_link'            => 'required|string',
+                    'video_link'            => 'required|string',
+                    'description'      => 'required|string',
+                    'status'           => 'required|in:DRAFT,ACTIVE,INACTIVE',
+                    'type'           => 'required|in:EMBED,LIVE,UPLOAD',
+                ]);
+        
+                
+        
+                $videos = Video::where('course_id', $course_id)->where('section_id', $section_id)->orderBy('order','DESC')->get();
+                $order = 1;
+                // dd($modules[0]->order);
+                // dd($modules);
+                if($videos->isNotEmpty()){
+                        $order = $videos[0]->order + 1;
+        }
+                $video = Video::create([
+                    'title'            => $validated['title'],
+                    'details'          => $validated['description'],
+                    'course_id'        => $course_id,
+                    'section_id'       => $section_id,
+                    'order'            => $order,
+                    'status'           => $validated['status'],
+                    'embed_link'       => $validated['embed_link'],
+                    'video_link'       => $validated['video_link'],
+                    'type'             => $validated['type'],
+                    'duration'         => 0,
+                ]);
+        
+                return redirect(sprintf('/admin/course/%d/', $course_id));
+
+            
+        }
+        // $course = Course::findOrFail($course_id);
+        // $module = Module::findOrFail($module_id);
+        $section = Section::where('id', $section_id)->where('course_id', $course_id)->where('module_id', $module_id)->first();
+        if(!$section){
+            return redirect('/admin/dashboard/');
+        }
+        return view('AdminVideoCreate',['course_id'=> $course_id,'module_id'=> $module_id,'section_id'=>$section_id]);
 
     }
     public function AllCourses(){

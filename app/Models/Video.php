@@ -8,7 +8,7 @@ use Section;
 
 class Video extends Model
 {
-    protected $fillable = ['title','url','duration','section_id','order'];
+    protected $fillable = ['title','details','embed_link','video_link','duration','section_id','order','course_id','status','type'];
 
     public function section(): BelongsTo {
         return $this->belongsTo(Section::class,'section_id');
