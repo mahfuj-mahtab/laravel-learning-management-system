@@ -16,7 +16,7 @@ class CourseController extends Controller
             $is_enrolled = $user->enrollments->contains($course_id);
         }
        
-        $course = Course::with('sections.videos')->findOrFail($course_id);
+        $course = Course::with('modules.sections.videos')->findOrFail($course_id);
         // var_dump($course->instructor->name);
         // dd(json_encode($course, JSON_PRETTY_PRINT));
         // dd($course);

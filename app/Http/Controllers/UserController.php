@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Section;
 use App\Models\Video;
 use Auth;
 use Illuminate\Http\Request;
@@ -28,28 +29,28 @@ class UserController extends Controller
     public function profile_course_video(int $course_id, int $section_id, int $video_id)
     {
         $user = Auth::user();
-    
+        // dd($user->enrollments);
         // Check if the user is enrolled in the course
-        if (!$user->enrollments->contains('id', $course_id)) {
+        if (!$user->enrollments->contains('course_id', $course_id)) {
             return redirect("/")->with('error', 'You are not enrolled in this course.');
         }
     
         // Fetch the course with sections and videos using eager loading
-        $course = Course::with(['sections.videos'])
-            ->where('id', $course_id)
+        $course = Course::where('id', $course_id)
             ->first();
-    
+        // dd($course);
         // Validate if the course, section, and video exist
         if (!$course) {
             return redirect("/")->with('error', 'Course not found.');
         }
     
-        $section = $course->sections->where('id', $section_id)->first();
-        if (!$section) {
-            return redirect("/")->with('error', 'Section not found.');
-        }
-    
-        $video = $section->videos->where('id', $video_id)->first();
+        // $section = Section::where('id', $section_id)->where('course_id',$course_id)->first();
+        // if (!$section) {
+        //     return redirect("/")->with('error', 'Section not found.');
+        // }
+        $video = Video::where('id', $video_id)->where('course_id', $course_id)->where('section_id', $section_id)->first();
+        // dd($video);
+        // $video = $section->videos->where('id', $video_id)->first();
         if (!$video) {
             return redirect("/")->with('error', 'Video not found.');
         }

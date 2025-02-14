@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $courses = Course::where('status','DRAFT')->get();
+        $courses = Course::where('status','ACTIVE')->get();
         // dd($courses);
         return view('index',['courses' => $courses]);
     }

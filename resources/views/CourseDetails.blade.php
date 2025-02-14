@@ -8,18 +8,18 @@
             <div class="course_details_in_right_side">
                 <div class="course_box_in_right">
                     <div class="course_trailer">
-                        <iframe width="100%" height="100%" src={`${course.trailer_link}`} frameborder="0"></iframe>
+                        <iframe width="100%" height="100%" src="" frameborder="0"></iframe>
 
                         
                     </div>
                     <h3 class="price">
-                    {{$course->price}}
+                    {{$course->discount_price}}
                    </h3>
                         
                      
                    @if ($is_enrolled)
                       <a class="enroll-btn" href="/profile">Finish Course</a>
-                      @elseif ($course->price > 0)
+                      @elseif ($course->discount_price > 0)
                     
                         <form action="/checkout" method="POST">
                           @csrf
@@ -91,8 +91,9 @@
                 <div class="syllabus">
             <h3>Course Syllabus</h3>
        
-           @foreach ($course->sections as $section)
-           
+           @foreach ($course->modules as $modules)
+            @foreach ($modules->sections as $section)
+            
            <div> 
                <div class="course_section" id="course_box" key={key}>
                    <div class="course_section_top"  >
@@ -121,6 +122,8 @@
            
            </div>
            </div>
+           @endforeach
+
            @endforeach
                
            
@@ -174,13 +177,13 @@
 
                 </div>
                 <h3 class="price">
-                 {{$course->price}} Tk
+                 {{$course->discount_price}} Tk
 
                    </h3>
                     
                    @if ($is_enrolled)
                       <a class="enroll-btn" href="/profile">Finish Course</a>
-                      @elseif ($course->price > 0)
+                      @elseif ($course->discount_price > 0)
                     
                         <form action="/checkout" method="POST">
                           @csrf
@@ -248,7 +251,8 @@
                 <div class="syllabus">
             <h3>Course Syllabus</h3>
        
-           @foreach ($course->sections as $section)
+           @foreach ($course->modules as $modules)
+           @foreach ($modules->sections as $section)
            
            <div> 
                <div class="course_section" id="course_box" key={key}>
@@ -269,6 +273,7 @@
                     <h3><i class="fas fa-check-square"></i> {{$single_video->title}}</h3> 
                 </a>
             </div>
+            @endforeach
             @endforeach
            
         
@@ -324,5 +329,7 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 @include('footer')

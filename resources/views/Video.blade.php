@@ -8,7 +8,7 @@
         <div class="video_player">
        
           
-            <iframe src={{$video->url}} width="100%" height="100%" frameBorder="0" allow="accelerometer" clipboard-write='true' encrypted-media='true' gyroscope='true' referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe src={{$video->embed_link}} width="100%" height="100%" frameBorder="0" allow="accelerometer" clipboard-write='true' encrypted-media='true' gyroscope='true' referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         
             
 
@@ -57,7 +57,8 @@
         <div class="syllabus">
             <h3>Course Syllabus</h3>
        
-           @foreach ($course->sections as $section)
+           @foreach ($course->modules as $modules)
+           @foreach ($modules->sections as $section)
            
            <div> 
                <div class="course_section" id="course_box" key={key}>
@@ -87,6 +88,7 @@
            
            </div>
            </div>
+           @endforeach
            @endforeach
                
            
