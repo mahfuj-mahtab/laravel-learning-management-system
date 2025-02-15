@@ -85,8 +85,8 @@
                     </div>
                     <div class="right_trial_section_in_course"><a class="book_free_class_btn" href="/trial">ফ্রী ক্লাস বুক করুন</a></div>
                 </div>
-                <h1 class="course_heading">{{$course->title}}</h1>
-                <p class="course_short_p">{{$course->description}}</p>
+                <!-- <h1 class="course_heading">{{$course->title}}</h1>
+                <p class="course_short_p">{{$course->description}}</p> -->
 
                 <div class="syllabus">
             <h3>Course Syllabus</h3>
