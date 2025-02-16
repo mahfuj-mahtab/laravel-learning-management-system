@@ -69,6 +69,7 @@
                         <br/>
                         <input type="submit" value="Login"/>
                         <br/>
+                        <span style="color: #869BA4; margin-left: 90px">Forgot Password?<span style="color: #207398"> <b>  <a class="a_login" href="/forgot-password"> Recover </a></b> </span></span> <br>
                         <span style="color: #869BA4; margin-left: 90px">Dont Have Account? <span style="color: #207398"> <b>  <a class="a_login" href="/register"> Register </a></b> </span></span>
                     </form>
                 </div>
