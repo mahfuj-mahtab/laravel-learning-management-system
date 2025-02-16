@@ -37,9 +37,9 @@
                 <div class="right_login_box">
                     <h3 class="login_title">Login</h3>
 
-                    <form action="/recovery/" method="POST">
+                    <form action="/forgot-password" method="POST">
                     @csrf
-                    @method('PATCH')
+                    
 
                 <input type="email" name="email" placeholder="Enter Email">  <br>
                 <!-- <input type="password" name="password" placeholder="Enter Pass">  <br> -->

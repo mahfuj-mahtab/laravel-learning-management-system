@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -36,7 +38,7 @@ class UserAuthController extends Controller
         return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
     }
     public function Recovery(Request $request){
-        if($request->method() == 'PATCH'){
+        if($request->method() == 'POST'){
 
             $validatedData = $request->validate([
                 'email' => 'required|email',
@@ -45,12 +47,22 @@ class UserAuthController extends Controller
             $user = User::where('email', $validatedData['email'])->first();
     
             if ($user) {
-                Mail::raw('this is test',function($message){
-                    $message->to('itstechnerd@gmail.com')->subject('test');
+                $otp = rand(100000, 999999);
+                $expiresAt = Carbon::now()->addMinutes(10); // OTP expires in 10 minutes
+
+                // Store OTP in password_resets table
+                DB::table('password_resets')->updateOrInsert(
+                    ['email' => $request->email],
+                    ['otp' => $otp, 'otp_expires_at' => $expiresAt, 'created_at' => now()]
+                );
+
+                // Send OTP via email
+                Mail::raw("Your password reset OTP is: $otp", function ($message) use ($request) {
+                    $message->to($request->email)->subject('Password Reset OTP');
                 });
-                dd('user');
-                $request->session()->regenerate();
-                return redirect()->intended('/profile');
+                // dd('user');
+                // $request->session()->regenerate();
+                // return redirect()->intended('/profile');
             }
             else{
                 dd('no user');
