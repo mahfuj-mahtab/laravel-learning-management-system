@@ -34,6 +34,10 @@
                     <input name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Complete Python Course ...." required value="{{ $course->title }}">
                 </div>
                 <div class="mb-3">
+                    <label for="trailer" class="form-label">Course Trailer</label>
+                    <input name="trailer" type="text" class="form-control" id="trailer" aria-describedby="emailHelp" placeholder="https://youtube.com" required>
+                </div>
+                <div class="mb-3">
                     <label for="short_description" class="form-label">Course Short Description</label>
                     <input name="short_description" type="text" class="form-control" style="height:100px;" id="short_description" required value={{ $course->short_description }}>
                 </div>

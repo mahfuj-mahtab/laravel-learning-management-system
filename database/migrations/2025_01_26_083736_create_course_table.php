@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('short_description');
+            $table->text('trailer');
             $table->text('description');
             $table->string('banner_image');
             $table->enum('type',['LIVE','REGULAR'])->default('REGULAR');

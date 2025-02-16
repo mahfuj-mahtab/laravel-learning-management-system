@@ -19,6 +19,7 @@ class AdminCourseController extends Controller
                 // Validation
                 $validated = $request->validate([
                     'title'            => 'required|string|max:255',
+                    'trailer'            => 'required|string|max:255',
                     'short_description'=> 'required|string|max:500',
                     'description'      => 'required|string',
                     'banner_image'     => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -38,6 +39,7 @@ class AdminCourseController extends Controller
                 // Store Data
                 $course = Course::create([
                     'title'            => $validated['title'],
+                    'trailer'            => $validated['trailer'],
                     'short_description'=> $validated['short_description'],
                     'description'      => $validated['description'],
                     'banner_image'     => $imagePath ?? null,
@@ -199,6 +201,7 @@ class AdminCourseController extends Controller
             // Validation
             $validated = $request->validate([
                 'title'            => 'required|string|max:255',
+                'trailer'            => 'required|string|max:255',
                 'short_description'=> 'required|string|max:500',
                 'description'      => 'required|string',
                 'banner_image'     => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -222,6 +225,7 @@ class AdminCourseController extends Controller
             // Store Data
             $course->update([
                 'title'            => $validated['title'],
+                'trailer'            => $validated['trailer'],
                 'short_description'=> $validated['short_description'],
                 'description'      => $validated['description'],
                 'banner_image'     => $imagePath ?? null,

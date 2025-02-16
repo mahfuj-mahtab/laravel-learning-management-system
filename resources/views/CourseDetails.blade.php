@@ -8,7 +8,7 @@
             <div class="course_details_in_right_side">
                 <div class="course_box_in_right">
                     <div class="course_trailer">
-                        <iframe width="100%" height="100%" src="" frameborder="0"></iframe>
+                        <iframe width="100%" height="100%" src="{{ $course->trailer }}" frameborder="0"></iframe>
 
                         
                     </div>
@@ -173,7 +173,7 @@
             <div class="left_course_details">
             <div class="course_box_in_right">
                 <div class="course_trailer">
-                    <iframe width="100%" height="100%" src="" frameborder="0"></iframe>
+                    <iframe width="100%" height="100%" src="{{ $course->trailer }}" frameborder="0"></iframe>
 
                 </div>
                 <h3 class="price">
