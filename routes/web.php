@@ -55,6 +55,8 @@ Route::post('/register', [UserAuthController::class,'register']);
 Route::post('/login', [UserAuthController::class,'login']);
 
 Route::get('/profile', [UserController::class,'profile'])->middleware('auth');
+Route::get('/profile/edit/', [UserController::class,'profileEdit'])->middleware('auth');
+Route::patch('/profile/edit/', [UserController::class,'profileEdit'])->middleware('auth');
 
 Route::get('/profile/course/{course_id}/', [UserController::class,'profile_course'])->middleware('auth');
 

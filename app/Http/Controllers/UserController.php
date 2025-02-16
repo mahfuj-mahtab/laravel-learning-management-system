@@ -15,6 +15,33 @@ class UserController extends Controller
         // dd(json_encode($user->enrollments, JSON_PRETTY_PRINT));
         return view('profile',['user'=>$user]);
     }
+    public function profileEdit(Request $request){
+        $user = Auth::user();
+        if($request->method() == 'PATCH'){
+            $validated = $request->validate([
+                'name'  => 'required|string|max:255',
+                
+                'bio'  => 'nullable|string|max:255',
+                'avatar'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+            if ($request->hasFile('avatar')) {
+                $imagePath = $request->file('avatar')->store('uploads', 'public');
+            }
+            else {
+                // If no new banner image is uploaded, keep the current banner image
+                $imagePath = $user->avatar;
+            }
+            $user->update([
+                'name'      => $validated['name'],
+                
+                'bio'       => $validated['bio'],
+                'avatar'    => $imagePath,
+            ]);
+            return redirect('/profile');
+        }
+        // dd(json_encode($user->enrollments, JSON_PRETTY_PRINT));
+        return view('UserSetting',['user'=>$user]);
+    }
     public function profile_course(int $course_id){
         $user = Auth::user();
         if($user->enrollments->contains($course_id)){

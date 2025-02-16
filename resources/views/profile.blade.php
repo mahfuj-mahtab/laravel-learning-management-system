@@ -15,10 +15,11 @@
         <div class="left_greeting_section">
 
                 <h1 class="profile_greeting">Hello, <b> {{$user->name}} </b></h1> <br/>
-                <img class='profile_greeting_profile_pic' src="" alt="" />
+                <img class='profile_greeting_profile_pic' src="{{ asset('storage/' . $user->avatar) }}" alt="" />
                 <b class="coin_b_tag"> <i class="fa-solid fa-coins"></i> Coin : 1k</b>
                 <b class="coin_b_tag"> <i class="fa-solid fa-gem"></i> Diamond : 1k</b> 
                 <b class="coin_b_tag"> <i class="fa-solid fa-ranking-star"></i> Rank : <span class="rank_span">Noob</span> </b>
+                <a href="/profile/edit/">Edit Profile</a>
                 
         </div>
    
