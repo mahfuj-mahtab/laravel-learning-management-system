@@ -190,9 +190,53 @@ class AdminCourseController extends Controller
         $course = Course::findOrFail($id);
         return view('AdminSingleCourse',['course'=>$course]);
     }
-    public function SingleCoursesEdit($id){
-        // $course = Course::findOrFail($id);
-        // return view('AdminSingleCourse',['courses'=>$course]);
+    public function SingleCoursesEdit(Request $request, $id){
+        $course = Course::findOrFail($id);
+        $instructors = User::where('role', 'INSTRUCTOR')->get();
+        $category = Sub_category::all();
+        if($request->method() == 'PATCH'){
+            
+            // Validation
+            $validated = $request->validate([
+                'title'            => 'required|string|max:255',
+                'short_description'=> 'required|string|max:500',
+                'description'      => 'required|string',
+                'banner_image'     => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'type'             => 'required|in:LIVE,REGULAR',
+                'instructor'    => 'required|exists:users,id',
+                'sub_category'  => 'required|exists:sub_categories,id',
+                'price'            => 'required|numeric|min:0',
+                'discount_price'   => 'nullable|numeric|min:0|lt:price', // Must be less than price
+                'status'           => 'required|in:DRAFT,ACTIVE,INACTIVE',
+            ]);
+    
+            // Upload Banner Image
+            if ($request->hasFile('banner_image')) {
+                $imagePath = $request->file('banner_image')->store('uploads', 'public');
+            }
+            else {
+                // If no new banner image is uploaded, keep the current banner image
+                $imagePath = $course->banner_image;
+            }
+    
+            // Store Data
+            $course->update([
+                'title'            => $validated['title'],
+                'short_description'=> $validated['short_description'],
+                'description'      => $validated['description'],
+                'banner_image'     => $imagePath ?? null,
+                'type'             => $validated['type'],
+                'instructor_id'    => $validated['instructor'],
+                'sub_category_id'  => $validated['sub_category'],
+                'price'            => $validated['price'],
+                'discount_price'   => $validated['discount_price'] ?? 0,
+                'status'           => $validated['status'],
+            ]);
+    
+            return redirect()->back()->with('success', 'Course updated successfully!');
+        
+    }
+        return view('AdminCourseEdit',['course'=>$course,'instructors'=>$instructors,'categories'=>$category]);
     }
     public function SingleCoursesDelete($id){
         $course = Course::findOrFail($id);

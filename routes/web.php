@@ -177,7 +177,8 @@ Route::get('/admin/course/add/', [AdminCourseController::class, 'SingleCourseAdd
 
 Route::post('/admin/course/add/', [AdminCourseController::class, 'SingleCourseAdd'])->middleware('auth','admin');
 Route::get('/admin/course/{id}/', [AdminCourseController::class, 'SingleCoursesShow'])->middleware('auth','admin');
-Route::patch('/admin/course/{id}/edit', [AdminCourseController::class, 'SingleCoursesEdit'])->middleware('auth','admin');
+Route::get('/admin/course/{id}/edit', [AdminCourseController::class, 'SingleCoursesEdit'])->middleware('auth','admin');
+Route::patch('/admin/course/{id}/edit/', [AdminCourseController::class, 'SingleCoursesEdit'])->middleware('auth','admin');
 Route::post('/admin/course/{id}/delete', [AdminCourseController::class, 'SingleCoursesDelete'])->middleware('auth','admin');
 
 
