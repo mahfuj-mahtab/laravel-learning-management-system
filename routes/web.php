@@ -54,6 +54,9 @@ Route::post('/register', [UserAuthController::class,'register']);
 
 Route::post('/login', [UserAuthController::class,'login']);
 
+Route::get('/recovery/', [UserAuthController::class,'Recovery']);
+Route::patch('/recovery/', [UserAuthController::class,'Recovery']);
+
 Route::get('/profile', [UserController::class,'profile'])->middleware('auth');
 Route::get('/profile/edit/', [UserController::class,'profileEdit'])->middleware('auth');
 Route::patch('/profile/edit/', [UserController::class,'profileEdit'])->middleware('auth');

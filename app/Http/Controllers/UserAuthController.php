@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserAuthController extends Controller
 {
@@ -33,5 +34,29 @@ class UserAuthController extends Controller
         }
         
         return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
+    }
+    public function Recovery(Request $request){
+        if($request->method() == 'PATCH'){
+
+            $validatedData = $request->validate([
+                'email' => 'required|email',
+          
+            ]);
+            $user = User::where('email', $validatedData['email'])->first();
+    
+            if ($user) {
+                Mail::raw('this is test',function($message){
+                    $message->to('itstechnerd@gmail.com')->subject('test');
+                });
+                dd('user');
+                $request->session()->regenerate();
+                return redirect()->intended('/profile');
+            }
+            else{
+                dd('no user');
+            }
+        }
+        return view('PasswordRecovery');
+        // return back()->withErrors(['email' => 'The provided credentials do not match our records.']);
     }
 }
