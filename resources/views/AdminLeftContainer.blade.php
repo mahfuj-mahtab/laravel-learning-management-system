@@ -18,6 +18,12 @@
         </a>
       </li>
       <li>
+        <a href="/admin/categories/" class="nav-link text-dark">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+          Category
+        </a>
+      </li>
+      <li>
         <a href="#" class="nav-link text-dark">
           <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
           Orders

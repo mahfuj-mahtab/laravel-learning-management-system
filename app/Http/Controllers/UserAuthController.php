@@ -17,7 +17,7 @@ class UserAuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
-        User::create(["name" => $request-> name,'email'=> $request-> email, "password" => bcrypt($request-> password),"avatar"=>"default.jpg","role" => "INSTRUCTOR"]);
+        User::create(["name" => $request-> name,'email'=> $request-> email, "password" => bcrypt($request-> password),"avatar"=>"default.jpg","role" => "ADMIN"]);
         
         return view('register');
     }

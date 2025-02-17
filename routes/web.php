@@ -245,11 +245,17 @@ Route::get('/admin/course/video/add/{course_id}/module/{module_id}/section/{sect
 Route::post('/admin/course/video/add/{course_id}/module/{module_id}/section/{section_id}/', [AdminCourseController::class, 'AdminVideoCreate'])->middleware('auth','admin');
 
 Route::get('/admin/categories/', [AdminCategoryController::class, 'AllCategory'])->middleware('auth','admin');
+Route::get('/admin/categories/create/', [AdminCategoryController::class, 'CategoryCreate'])->middleware('auth','admin');
+Route::post('/admin/categories/create/', [AdminCategoryController::class, 'CategoryCreate'])->middleware('auth','admin');
 Route::get('/admin/category/{id}/', [AdminCategoryController::class, 'SingleCategoryShow'])->middleware('auth','admin');
 Route::patch('/admin/category/{id}/edit', [AdminCategoryController::class, 'SingleCategoryEdit'])->middleware('auth','admin');
 Route::post('/admin/category/{id}/delete', [AdminCategoryController::class, 'SingleCategoryDelete'])->middleware('auth','admin');
 
 Route::get('/admin/sub_categories/', [AdminCategoryController::class, 'AllSubCategory'])->middleware('auth','admin');
+
+Route::get('/admin/sub_category/create/', [AdminCategoryController::class, 'SubCategoryCreate'])->middleware('auth','admin');
+Route::post('/admin/sub_category/create/', [AdminCategoryController::class, 'SubCategoryCreate'])->middleware('auth','admin');
+
 Route::get('/admin/sub_categorie/{id}/', [AdminCategoryController::class, 'SingleSubCategoryShow'])->middleware('auth','admin');
 Route::patch('/admin/sub_categorie/{id}/edit', [AdminCategoryController::class, 'SingleSubCategoryEdit'])->middleware('auth','admin');
 Route::post('/admin/sub_categorie/{id}/delete', [AdminCategoryController::class, 'SingleSubCategoryDelete'])->middleware('auth','admin');
